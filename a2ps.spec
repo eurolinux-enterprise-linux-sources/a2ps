@@ -13,7 +13,7 @@
 Summary: Converts text and other types of files to PostScript
 Name: a2ps
 Version: 4.14
-Release: 10.1%{?dist}
+Release: 13%{?dist}
 License: GPLv3+
 Group: Applications/Publishing
 Source0: http://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz
@@ -44,7 +44,7 @@ Patch35: a2ps-4.14-texinfo-nodes.patch
 Requires: fileutils sh-utils info
 BuildRequires: gperf
 BuildRequires: emacs, emacs-el, flex, libtool, texinfo, groff
-BuildRequires: ImageMagick
+BuildRequires: ImageMagick >= 6.7.2.7
 BuildRequires: groff-perl
 BuildRequires: cups
 BuildRequires: gettext, bison
@@ -53,7 +53,7 @@ BuildRequires: psutils, tetex-dvips, texinfo, tetex-latex, html2ps
 #BuildRequires: gv
 Url: http://www.gnu.org/software/a2ps/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires: psutils, ImageMagick, texinfo-tex, gzip, bzip2, groff-perl
+Requires: psutils, ImageMagick >= 6.7.2.7, texinfo-tex, gzip, bzip2, groff-perl
 Requires: tetex-dvips, tetex-latex, tetex-fonts, file, html2ps, psutils-perl
 # for hebrew support, path set. 
 # culmus-fonts
@@ -288,6 +288,9 @@ exit 0
 %{emacs_lispdir}/*.el
 
 %changelog
+* Fri Feb 20 2015 Jan Horak <jhorak@redhat.com> - 4.14-13
+- Rebuild due to rebase of ImageMagick
+
 * Mon Apr 26 2010 Dennis Gregorovic <dgregor@redhat.com> - 4.14-10.1
 - Rebuilt for RHEL 6
 Related: rhbz#566527
